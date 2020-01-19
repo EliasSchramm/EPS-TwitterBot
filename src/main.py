@@ -1,7 +1,7 @@
 from Stalker import TwitterStalker
 from selenium import webdriver
 
-PathToDriver = "C:/Users/Elias/Documents/selemium/chromedriver.exe"
+PathToDriver = "chromedriver.exe"
 
 driver = webdriver.Chrome(PathToDriver)
 
