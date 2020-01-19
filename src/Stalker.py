@@ -4,8 +4,8 @@ import time as t
 class TwitterStalker():
     def __init__(self, toStalk, driver):
         self.file = toStalk + ".txt"
-        self.iter = 0;
-        self.found = 0;
+        self.iter = 0
+        self.found = 0
         list = open(self.file, 'a')
         list.close()
         self.driver = driver
@@ -25,13 +25,19 @@ class TwitterStalker():
                 id = i.get_attribute("data-item-id")
                 text = i.find_element_by_class_name("js-tweet-text").text
 
+                timeContainer = i.find_element_by_class_name("tweet-timestamp")
+
+                timeStamp = timeContainer.get_attribute("title");
+
                 if not (str(id) in temps) and text != "":
                     print(self.stalk + " Registered new Tweet\n")
                     print("ID: " + str(id))
+                    print("Time: " + str(timeStamp))
                     print("Text: " + text)
+
                     print("\n")
                     self.found += 1;
-                    self.appendToList(id, text)
+                    self.appendToList(id, text, timeStamp)
 
         self.iter += 1;
         print(self.stalk + ": " + str(self.iter) + " Iterations, " + str(self.found) + " Tweets Found!")
@@ -42,8 +48,9 @@ class TwitterStalker():
         list.close()
         return ret
 
-    def appendToList(self, id, text):
+    def appendToList(self, id, text, time):
         list = open(self.file, 'a')
         list.write("ID:" + str(id) + "\n")
+        list.write("TIME:" + str(time) + "\n")
         list.write("TEXT:" + text + "\n\n")
         list.close()
