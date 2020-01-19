@@ -15,7 +15,7 @@ class TwitterStalker():
     def search(self):
 
         self.driver.get("https://twitter.com/" + self.stalk + "/")
-        t.sleep(5)
+        t.sleep(30)
         x = self.driver.find_elements_by_class_name("js-original-tweet");
         temps = self.getList();
 
