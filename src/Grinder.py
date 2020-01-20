@@ -1,5 +1,5 @@
 import time as t
-waitTime = 5;
+waitTime = 2;
 SCROLL_PAUSE_TIME = 6
 
 
@@ -14,7 +14,7 @@ class TwitterGrinder():
         self.driver = driver
         self.grinding = toGrind
         t.sleep(4)
-        self.last_height = 0
+        self.last_found = 0
 
         self.prepGrind()
 
@@ -53,6 +53,10 @@ class TwitterGrinder():
         # Scroll down to bottom
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
+        if(self.last_found == self.found):
+            exit()
+
+        self.last_found = self.found
 
 
 
