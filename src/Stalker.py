@@ -1,4 +1,5 @@
 import time as t
+waitTime = 60;
 
 
 class TwitterStalker():
@@ -15,7 +16,7 @@ class TwitterStalker():
     def search(self):
 
         self.driver.get("https://twitter.com/" + self.stalk + "/")
-        t.sleep(30)
+        t.sleep(waitTime)
         x = self.driver.find_elements_by_class_name("js-original-tweet");
         temps = self.getList();
 
