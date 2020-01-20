@@ -7,7 +7,7 @@ class TwitterStalker():
         self.file = toStalk + ".txt"
         self.iter = 0
         self.found = 0
-        list = open(self.file, 'a')
+        list = open(self.file, 'a', encoding="utf-8")
         list.close()
         self.driver = driver
         self.stalk = toStalk;
@@ -34,7 +34,7 @@ class TwitterStalker():
                     print(self.stalk + " Registered new Tweet\n")
                     print("ID: " + str(id))
                     print("Time: " + str(timeStamp))
-                    print("Text: " + text)
+                    print("Text: " + str(text))
 
                     print("\n")
                     self.found += 1;
@@ -44,13 +44,13 @@ class TwitterStalker():
         print(self.stalk + ": " + str(self.iter) + " Iterations, " + str(self.found) + " Tweets Found!")
 
     def getList(self):
-        list = open(self.file, 'r')
+        list = open(self.file, 'r', encoding="utf-8")
         ret = list.read()
         list.close()
         return ret
 
     def appendToList(self, id, text, time):
-        list = open(self.file, 'a')
+        list = open(self.file, 'a', encoding="utf-8")
         list.write("ID:" + str(id) + "\n")
         list.write("TIME:" + str(time) + "\n")
         list.write("TEXT:" + text + "\n\n")
