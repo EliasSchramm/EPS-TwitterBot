@@ -1,6 +1,9 @@
+#WARNING:
+#This script will Download only the last ca. 300 Mesages
+
 import time as t
 waitTime = 2;
-SCROLL_PAUSE_TIME = 6
+
 
 
 
